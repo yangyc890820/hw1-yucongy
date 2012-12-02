@@ -7,17 +7,23 @@ import com.aliasi.util.AbstractExternalizable;
 import com.aliasi.util.ScoredObject;
 import com.aliasi.util.Strings;
 import java.lang.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
+//import java.supermap.services.util.ResourceManager;
 
 import java.io.File;
 import java.util.Iterator;
 
 import java.util.regex.Pattern;
 
+import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceManager;
 
 import Model.Sentence;
 
@@ -37,8 +43,12 @@ public class SentenceAnnotator extends JCasAnnotator_ImplBase {
     int temp1;
     int temp2;
     String temp3 = null; 
-    File modelFile = new File("src/main/resources/ne-en-bio-genetag.HmmChunker");
-    System.out.println("Reading chunker from file=" + modelFile);
+    String temp4 = null;
+    
+    URL base = ClassLoader.getSystemClassLoader().getResource("");
+    temp4 =  base.toString().substring(6);
+    File modelFile = new File(temp4+"ne-en-bio-genetag.HmmChunker");
+
     ConfidenceChunker chunker = null;
     int position = 0;
     try {
