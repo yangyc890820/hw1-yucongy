@@ -43,12 +43,12 @@ public class SentenceAnnotator extends JCasAnnotator_ImplBase {
     int temp1;
     int temp2;
     String temp3 = null; 
-    String temp4 = null;
+    //String temp4 = null;
     
-    URL base = ClassLoader.getSystemClassLoader().getResource("");
-    temp4 =  base.toString().substring(6);
-    File modelFile = new File(temp4+"ne-en-bio-genetag.HmmChunker");
-
+    //URL base = ClassLoader.getSystemClassLoader().getResource("");
+    //temp4 =  base.toString().substring(6);
+    File modelFile = new File("lingpipe/ne-en-bio-genetag.HmmChunker");
+    
     ConfidenceChunker chunker = null;
     int position = 0;
     try {
